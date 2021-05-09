@@ -185,29 +185,26 @@ const fi = (function () {
     },
 
     uniq: function (array,isSorted, callback){
-      const newArray = []
-      if (isSorted){
+      let newObject = {}
+      let newArray = []
+      const finalArray = []
+      
         for(const e in array){
-
-          newArray.push(array[e])
-          console.log("array was already sorted")
+          
+          newObject[e] = "1"
         }
 
 
-      } else {
+      newArray = fi.keys(newObject)
 
-        newArray.push(array.sort((a,b) => a-b))
-        console.log("array wasn't sorted")
-
-        for(const e in array){
-          if(array[e] === array[e+1]){
-            array.splice(e+1,1)
-          }
-        }
-
+      
+      for(const e in newArray){
+       finalArray.push(parseInt(newArray[e],10))
       }
-      console.log(newArray)
-      return newArray
+
+      console.log(finalArray)
+      return finalArray
+
 
 
     },
@@ -247,3 +244,46 @@ fi.libraryMethod()
 
 
 
+// uniq: function(collection, sorted=false, iteratee=false) {
+//   if (sorted) {
+//     return fi.uniqSorted(collection, iteratee)
+//   } else if (!iteratee) {
+//     return Array.from(new Set(collection))
+//   } else {
+//     const modifiedVals = new Set()
+//     const uniqVals = new Set()
+//     for (let val of collection) {
+//       const moddedVal = iteratee(val)
+//       if (!modifiedVals.has(moddedVal)) {
+//         modifiedVals.add(moddedVal)
+//         uniqVals.add(val)
+//       }
+//     }
+//     return Array.from(uniqVals)
+//   }
+// },
+
+// my try
+// uniq: function (array,isSorted, callback){
+//   const newArray = []
+//   if (isSorted){
+//     for(const e in array){
+
+//       newArray.push(array[e])
+//       console.log("array was already sorted")
+//     }
+
+
+//   } else {
+
+//     newArray.push(array.sort((a,b) => a-b))
+//     console.log("array wasn't sorted")
+
+//     for(const e in array){
+//       if(array[e] === array[e+1]){
+//         array.splice(e+1,1)
+//       }
+//     }
+
+//   }
+//   console.log(newArray)
